@@ -5,7 +5,7 @@
 #	Easy to copy files to wsl
 #------------------------------------
 #	Usage:
-#	./wcp.sh "C:/xx/xx"
+#	./wcp.sh "C:\xx\xx"
 #------------------------------------
 #	Author:
 #	https://unihon.github.io/
