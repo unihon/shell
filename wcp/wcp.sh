@@ -14,16 +14,15 @@
 #	Date:
 #	2018-12-27
 #	Update:
-#	2019-01-02
+#	2019-02-18
 #===================================
 
-str=$1
+if [ "$1" ==  "" ];then
+	echo "No path."
+	exit
+fi
 
-tmp=${str//\\/\/}
-row=${tmp//\ /\\ }
+uri=$(echo $1|sed -e 's/\\/\//g' -e 's/\ /\\ /g' -e 's/^\(.\):\(.*\)$/\/mnt\/\l\1\2/g')
 
-typeset -l partition=$(echo $row|cut -d ":" -f1)
-uri=$(echo $row|cut -d ":" -f2)
-uri_l="/mnt/"${partition}${uri}
-
-echo $uri_l|xargs -i cp -r {} .
+echo $uri|xargs -i cp -r {} .
+echo "Finish."
