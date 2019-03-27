@@ -6,8 +6,8 @@ SOURSE_HOST=""
 SOURSE="$2"
 
 # remote host data.
-REMOTE_USER=""
-REMOTE_HOST=""
+REMOTE_USER="docker"
+REMOTE_HOST="192.168.22.164"
 DESTINATION="$3"
 
 if [ "$1" == "-s" ]
@@ -22,7 +22,10 @@ then
 elif [ "$1" == "-g" ]
 then
 	scp -r "${REMOTE_USER}"@"${REMOTE_HOST}":"${SOURSE}" "${DESTINATION}" 
+elif [ "$1" == "-e" ]
+then
+	vim scp://"${REMOTE_USER}"@"${REMOTE_HOST}"/"${SOURSE}" 
 else
-	echo "ecp <-s|-g> sourse destination."
+	echo "ecp <-s|-g|-e> sourse destination."
 fi
 
